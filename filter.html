@@ -1,0 +1,50 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"
+  /* Learning and practicing Angular JS ; code credit goes to internet & www.w3schools.com
+  */
+></script>
+<body>
+  <script>
+var a=angular.module('demo', []);
+a.controller('ctrl', function($scope) {
+    $scope.stores= [
+        {product:'Biscuit',price:10},
+        {product:'Pen',price:5},
+        {product:'Candy',price:1},
+        {product:'Puffed rice',price:70},
+        {product:'Egg',price:11},
+        {product:'Soap',price:25},
+        {product:'Milk',price:90},
+        {product:'Tea',price:15},
+
+        {product:'Chicken',price:185},
+        
+        {product:'Green Papaya',price:20},
+        ];
+    $scope.orderByPick = function(x) {
+        $scope.theOrder= x;
+    }
+});
+</script>
+
+<p>Click  column titles to change the sorting order:</p>
+
+<div data-ng-app="demo" data-ng-controller="ctrl">
+
+<table border="1" width="100%">
+<tr>
+<th data-ng-click="orderByPick('product')">Product</th>
+<th data-ng-click="orderByPick('price')">Price</th>
+</tr>
+<tr data-ng-repeat="x in stores | orderBy:theOrder">
+<td>{{x.product}}</td>
+<td>{{x.price}}</td>
+</tr>
+</table>
+
+</div>
+
+
+
+</body>
+</html>
